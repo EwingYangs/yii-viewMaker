@@ -83,6 +83,11 @@ class SiteController extends Controller
         ]);
     }
 
+    public function actionMain()
+    {
+        return $this->render('main');
+    }
+
     /**
      * Logout action.
      *
