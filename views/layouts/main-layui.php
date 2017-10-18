@@ -23,6 +23,36 @@ AppAsset :: register($this);//注册基本样式和js
 
 <?php $this->beginBody() ?>
 
+<!-- 信息提示 -->
+<?php
+if( Yii::$app->getSession()->hasFlash('success') ) {
+    $msg = Yii::$app->getSession()->getFlash('success');
+?>
+
+    <?php
+    $this->beginBlock('service') ?>
+        layer.msg("<?=$msg?>", {icon: 1, anim: 6, time: 2500});
+    <?php $this->endBlock() ?>
+    <?php $this->registerJs($this->blocks['service'], \yii\web\View::POS_END);
+    ?>
+    <?php
+}?>
+
+
+<?php
+if( Yii::$app->getSession()->hasFlash('error') ) {
+    $msg = Yii::$app->getSession()->getFlash('error');
+?>
+    <?php
+    $this->beginBlock('service') ?>
+        layer.msg("<?=$msg?>", {icon: 2, anim: 6, time: 2500});
+    <?php $this->endBlock() ?>
+    <?php $this->registerJs($this->blocks['service'], \yii\web\View::POS_END);
+    ?>
+    <?php
+}?>
+
+
 <?= $content ?>
 
 <?php $this->endBody() ?>

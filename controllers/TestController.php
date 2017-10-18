@@ -3,16 +3,16 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\BmNews;
-use app\models\BmNewsSearch;
+use app\models\Test;
+use app\models\TestSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * BmNewsController implements the CRUD actions for BmNews model.
+ * TestController implements the CRUD actions for Test model.
  */
-class NewsController extends Controller
+class TestController extends Controller
 {
     /**
      * @inheritdoc
@@ -30,12 +30,12 @@ class NewsController extends Controller
     }
 
     /**
-     * Lists all BmNews models.
+     * Lists all Test models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new BmNewsSearch();
+        $searchModel = new TestSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -45,7 +45,7 @@ class NewsController extends Controller
     }
 
     /**
-     * Displays a single BmNews model.
+     * Displays a single Test model.
      * @param integer $id
      * @return mixed
      */
@@ -57,16 +57,17 @@ class NewsController extends Controller
     }
 
     /**
-     * Creates a new BmNews model.
+     * Creates a new Test model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new BmNews();
+        $model = new Test();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            Yii::$app->getSession()->setFlash('success', '新增成功');
+            return $this->redirect(['index']);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -75,7 +76,7 @@ class NewsController extends Controller
     }
 
     /**
-     * Updates an existing BmNews model.
+     * Updates an existing Test model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -85,7 +86,8 @@ class NewsController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            Yii::$app->getSession()->setFlash('success', '编辑成功');
+            return $this->redirect(['index']);
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -94,28 +96,32 @@ class NewsController extends Controller
     }
 
     /**
-     * Deletes an existing BmNews model.
+     * Deletes an existing Test model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        if($this->findModel($id)->delete()){
+            Yii::$app->getSession()->setFlash('success', '删除成功');
+        }else{
+            Yii::$app->getSession()->setFlash('error', '删除失败，请重试');
+        }
 
         return $this->redirect(['index']);
     }
 
     /**
-     * Finds the BmNews model based on its primary key value.
+     * Finds the Test model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return BmNews the loaded model
+     * @return Test the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = BmNews::findOne($id)) !== null) {
+        if (($model = Test::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

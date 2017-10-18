@@ -5,12 +5,12 @@ namespace app\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\BmNews;
+use app\models\Test;
 
 /**
- * BmNewsSearch represents the model behind the search form about `app\models\BmNews`.
+ * TestSearch represents the model behind the search form about `app\models\Test`.
  */
-class BmNewsSearch extends BmNews
+class TestSearch extends Test
 {
     /**
      * @inheritdoc
@@ -18,9 +18,8 @@ class BmNewsSearch extends BmNews
     public function rules()
     {
         return [
-            [['id', 'own', 'prepaid_time', 'type', 'status', 'update_at', 'create_at'], 'integer'],
-            [['username', 'number'], 'safe'],
-            [['amount'], 'number'],
+            [['id', 'age'], 'integer'],
+            [['username', 'tel', 'hobby', 'decr'], 'safe'],
         ];
     }
 
@@ -42,12 +41,13 @@ class BmNewsSearch extends BmNews
      */
     public function search($params)
     {
-        $query = BmNews::find();
+        $query = Test::find();
 
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'pagination' =>  ['pageSize' => 10],
         ]);
 
         $this->load($params);
@@ -61,17 +61,13 @@ class BmNewsSearch extends BmNews
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'own' => $this->own,
-            'amount' => $this->amount,
-            'prepaid_time' => $this->prepaid_time,
-            'type' => $this->type,
-            'status' => $this->status,
-            'update_at' => $this->update_at,
-            'create_at' => $this->create_at,
+            'age' => $this->age,
         ]);
 
         $query->andFilterWhere(['like', 'username', $this->username])
-            ->andFilterWhere(['like', 'number', $this->number]);
+            ->andFilterWhere(['like', 'tel', $this->tel])
+            ->andFilterWhere(['like', 'hobby', $this->hobby])
+            ->andFilterWhere(['like', 'decr', $this->decr]);
 
         return $dataProvider;
     }

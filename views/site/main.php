@@ -9,7 +9,8 @@ use backend\assets\AppAsset;
 use yii\helpers\Html;
 
 ?>
-<?=Html::cssFile('css/main.css')?>
+<?=Html::cssFile('layui/common/bootstrap/css/bootstrap.css')?>
+<?=Html::cssFile('css/layui/main.css')?>
 <section class="larry-wrapper">
     <!-- overview -->
     <div class="row state-overview">
@@ -19,7 +20,7 @@ use yii\helpers\Html;
                 </div>
                 <div class="value">
                     <a href="#">
-                        <h1 id="count1">11</h1>
+                        <h1 id="count1">110</h1>
                     </a>
                     <p>用户总量</p>
                 </div>
@@ -31,7 +32,7 @@ use yii\helpers\Html;
                 </div>
                 <div class="value">
                     <a href="#">
-                        <h1 id="count2">11</h1>
+                        <h1 id="count2">10</h1>
                     </a>
                     <p>今日注册用户</p>
                 </div>
@@ -44,7 +45,7 @@ use yii\helpers\Html;
                 </div>
                 <div class="value">
                     <a href="#">
-                        <h1 id="count3">11</h1>
+                        <h1 id="count3">100</h1>
                     </a>
                     <p>订单总数</p>
                 </div>
@@ -57,7 +58,7 @@ use yii\helpers\Html;
                 </div>
                 <div class="value">
                     <a href="#">
-                        <h1 id="count4">0</h1>
+                        <h1 id="count4">10</h1>
                     </a>
                     <p>待确认订单数</p>
                 </div>
@@ -69,7 +70,7 @@ use yii\helpers\Html;
         <div class="col-lg-6">
             <section class="panel">
                 <header class="panel-heading bm0">
-                    <span class='span-title'>应用概览</span>
+                    <span class='span-title'>网站概览</span>
                     <span class="tools pull-right"><a href="javascript:;" class="iconpx-chevron-down"></a></span>
                 </header>
                 <div class="panel-body" >
@@ -140,16 +141,107 @@ use yii\helpers\Html;
                     </table>
                 </div>
             </section>
-
+            <!-- 网站信息统计｛SEO数据统计｝ -->
+            <section class="panel">
+                <header class="panel-heading bm0">
+                    <span class='span-title'>网站信息统计｛SEO数据统计｝</span>
+                    <span class="tools pull-right"><a href="javascript:;" class="iconpx-chevron-down"></a></span>
+                </header>
+                <div class="panel-body laery-seo-box">
+                    <div class="larry-seo-stats" id="larry-seo-stats"></div>
+                </div>
+            </section>
         </div>
         <div class="col-lg-6">
-
+            <!-- 快捷操作 -->
+            <section class="panel">
+                <header class="panel-heading bm0">
+                    <span class='span-title'>快捷操作</span>
+                    <span class="tools pull-right"><a href="javascript:;" class="iconpx-chevron-down"></a></span>
+                </header>
+                <div class="panel-body">
+                    <table class="table table-hover personal-task shortcut">
+                        <tr>
+                            <td>
+                                <div class="c1">1</div>
+                                <div class="c2">2</div>
+                                <br>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </section>
+            <!-- 系统公告 -->
+            <section class="panel">
+                <header class="panel-heading bm0">
+                    <span class='span-title'>系统公告</span>
+                    <span class="tools pull-right"><a href="javascript:;" class="iconpx-chevron-down"></a></span>
+                </header>
+                <div class="panel-body">
+                    <table class="table table-hover personal-task shortcut">
+                        <tr>
+                            <td>
+                                <div class="c1">1</div>
+                                <div class="c2">2</div>
+                                <br>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </section>
+            <!-- 最新文章 -->
+            <section class="panel">
+                <header class="panel-heading bm0">
+                    <span class='span-title'>最新文章</span>
+                    <span class="badge" style="background-color:#FF3333;"> new </span>
+                    <span class="tools pull-right"><a href="javascript:;" class="iconpx-chevron-down"></a></span>
+                </header>
+                <div class="panel-body">
+                    <table class="table table-hover personal-task">
+                        <tbody>
+                        <tr>
+                            <td>原创</td>
+                            <td>
+                                <a href="#" target="_blank">汪涵率众特工入侵地球 20160408</a>
+                            </td>
+                            <td class="col-md-5">阅读量：1350 &nbsp;&nbsp;&nbsp;&nbsp; 2016-04-11 10:00:37</td>
+                        </tr>
+                        <tr>
+                            <td>原创</td>
+                            <td>
+                                <a href="#" target="_blank">汪涵率众特工入侵地球 20160408</a>
+                            </td>
+                            <td class="col-md-5">阅读量：1350 &nbsp;&nbsp;&nbsp;&nbsp; 2016-04-11 10:00:37</td>
+                        </tr>
+                        <tr>
+                            <td>原创</td>
+                            <td>
+                                <a href="#" target="_blank">汪涵率众特工入侵地球 20160408</a>
+                            </td>
+                            <td class="col-md-5">阅读量：1350 &nbsp;&nbsp;&nbsp;&nbsp; 2016-04-11 10:00:37</td>
+                        </tr>
+                        <tr>
+                            <td>原创</td>
+                            <td>
+                                <a href="#" target="_blank">汪涵率众特工入侵地球 20160408</a>
+                            </td>
+                            <td class="col-md-5">阅读量：1350 &nbsp;&nbsp;&nbsp;&nbsp; 2016-04-11 10:00:37</td>
+                        </tr>
+                        <tr>
+                            <td>原创</td>
+                            <td>
+                                <a href="#" target="_blank">汪涵率众特工入侵地球 20160408</a>
+                            </td>
+                            <td class="col-md-5">阅读量：1350 &nbsp;&nbsp;&nbsp;&nbsp; 2016-04-11 10:00:37</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
         </div>
     </div>
 
 </section>
-
-
 
 <?php $this->beginBlock('service') ?>
 
@@ -176,3 +268,4 @@ el.slideDown(200);
 $this->registerJsFile('layui/jsplug/echarts.min.js', ['depends' => 'yii\web\YiiAsset', 'position' => \yii\web\View::POS_END]);
 $this->registerJsFile('layui/js/main.js', ['depends' => 'yii\web\YiiAsset', 'position' => \yii\web\View::POS_END]);
 ?>
+
