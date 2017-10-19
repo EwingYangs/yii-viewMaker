@@ -1,4 +1,4 @@
-#重做Yii里面的gii模板生成
+##重做Yii里面的gii模板生成
 > 基于Yii2，代码只在Yii2(basic)的基础上改造gii视图生成模块(加入layui框架)
 
 - 功能实现：
@@ -20,19 +20,31 @@
 	- php;
 	- mysql;
 	- xampp;
+	- Yii2;
 
 - 操作示例：
->生成test表的增删改查，有id，姓名，电话，爱好等字段；
+>生成test表的增删改查示例，有id，姓名，电话，爱好等字段，在代码中生成模型，控制器，视图
 
-	![test.gif](C:\Users\shuai\Desktop\test.gif)
+	![](http://chuantu.biz/t6/103/1508376452x992584279.gif)
+	
+- 生成的文件：
+	- Test.php(模型)
+	- TestSearch.php(搜索模型)
+	- TestController(控制器)
+	- _search.php(视图)
+	- _form.php(视图)
+	- index.php(视图)
+	- create.php(视图)
+	- update.php(视图)
+	- view.php(视图)
 
 
 - 效果图：
 
-![微信图片_20171018174755.png](C:\Users\shuai\Desktop\微信图片_20171018174755.png)
+![微信图片_20171018174755.png](http://chuantu.biz/t6/103/1508376543x992584279.png)
 
 
-![微信图片_20171018174824.png](C:\Users\shuai\Desktop\微信图片_20171018174824.png)
+![微信图片_20171018174824.png](http://chuantu.biz/t6/103/1508376575x992584279.png)
 
 
-![微信图片_20171018174829.png](C:\Users\shuai\Desktop\微信图片_20171018174829.png)
+![微信图片_20171018174829.png](http://chuantu.biz/t6/103/1508376594x992584279.png)
