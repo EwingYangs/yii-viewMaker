@@ -70,6 +70,7 @@ class SiteController extends Controller
      */
     public function actionLogin()
     {
+        $this->layout = false;//不使用模板
         if (!Yii::$app->user->isGuest) {
             return $this->goHome();
         }
@@ -85,6 +86,7 @@ class SiteController extends Controller
 
     public function actionMain()
     {
+        Yii::$app->log->targets['debug'] = null;//关闭debug
         return $this->render('main');
     }
 
