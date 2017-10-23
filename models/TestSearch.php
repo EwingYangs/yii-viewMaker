@@ -19,7 +19,7 @@ class TestSearch extends Test
     {
         return [
             [['id', 'age'], 'integer'],
-            [['username', 'tel', 'hobby', 'decr'], 'safe'],
+            [['username', 'tel', 'hobby', 'decr' ,'sex'], 'safe'],
         ];
     }
 
@@ -67,7 +67,8 @@ class TestSearch extends Test
         $query->andFilterWhere(['like', 'username', $this->username])
             ->andFilterWhere(['like', 'tel', $this->tel])
             ->andFilterWhere(['like', 'hobby', $this->hobby])
-            ->andFilterWhere(['like', 'decr', $this->decr]);
+            ->andFilterWhere(['like', 'decr', $this->decr])
+            ->andFilterWhere(['like', 'sex', $this->sex]);
 
         return $dataProvider;
     }

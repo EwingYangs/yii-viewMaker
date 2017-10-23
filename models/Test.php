@@ -49,6 +49,7 @@ class Test extends \yii\db\ActiveRecord
             'age' => '年龄',
             'hobby' => '爱好',
             'decr' => '简介',
+            'sex' => '性别',
         ];
     }
 }

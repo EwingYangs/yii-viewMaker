@@ -60,6 +60,7 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+        Yii::$app->log->targets['debug'] = true;//开启debug
         return $this->render('index');
     }
 
@@ -86,7 +87,6 @@ class SiteController extends Controller
 
     public function actionMain()
     {
-        Yii::$app->log->targets['debug'] = null;//关闭debug
         return $this->render('main');
     }
 
