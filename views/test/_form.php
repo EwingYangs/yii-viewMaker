@@ -20,9 +20,13 @@ use yii\widgets\ActiveForm;
         ]
     ); ?>
 
-    <?= $form->field($model, 'tel')->dropDownList(['0' => '0' , '1'=> '1'], ['prompt'=>'请选择','style'=> "width:50%"]) ?>
 
     <?= $form->field($model, 'username')->textInput(['style'=> 'width:30%','class' => "layui-input"]) ?>
+
+    <div class="upload_img_div <?php echo !$model->isNewRecord && $model->logo ? '' : 'hidden';?>">
+        <img src="<?php echo !$model->isNewRecord && $model->logo ? $model->logo : ''?>" class="upload_img">
+    </div>
+    <?= $form->field($model, 'logo')->fileInput(['class' => "layui-upload-file"]) ?>
 
     <?= $form->field($model, 'tel')->textInput(['style'=> 'width:30%','class' => "layui-input"]) ?>
 
@@ -39,11 +43,14 @@ use yii\widgets\ActiveForm;
         ]
     ) ?>
 
-    <?= $form->field($model, 'age')->textInput(['maxlength' => true,'style'=> 'width:30%','class' => "layui-input"]) ?>
+    <?= $form->field($model, 'area')->dropDownList(['广东' => '广东' , '江苏'=> '江苏'], ['prompt'=>'请选择']) ?>
+
+    <?= $form->field($model, 'age')->textInput(['style'=> 'width:30%','class' => "layui-input"]) ?>
 
     <?= $form->field($model, 'hobby')->textInput(['style'=> 'width:30%','class' => "layui-input"]) ?>
 
-    <?= $form->field($model, 'decr')->textInput(['style'=> 'width:30%','class' => "layui-input"]) ?>
+    <?= $form->field($model, 'decr')->textarea() ?>
+
 
     <div class="modal-footer">
                 <button type="button" class="layui-btn layui-btn-danger" data-dismiss="modal">关闭</button>
@@ -56,11 +63,50 @@ use yii\widgets\ActiveForm;
 </div>
 
 <?php $this->beginBlock("servicea") ?>
-layui.use('form', function(){
+
+    var options = {
+      url: '<?=Yii::$app->urlManager->createUrl('test/uploadfile')?>',
+      success: function(res){
+        //返回服务器图片路径
+        if(res.msg == 'success'){
+            $('input[name="Test[logo]"][type="hidden"]').val(res.url);
+            $('.upload_img').attr('src','/'+res.url);
+            $('.upload_img_div').removeClass('hidden');
+        }else{
+            layer.msg('上传失败'+res);
+        }
+      }
+    }
+
+    layui.use('upload', function(){
+        $("#test-logo").prepend('<input type="hidden" name="_csrf-backend" value="<?= Yii::$app->request->csrfToken ?>">');
+        document.getElementById("create-form").removeEventListener("submit", function(e){
+        alert('11');
+        e.stopPropagation();
+        });
+        layui.upload(options);
+
+    });
+
+    layui.use('form', function(){
         var form = layui.form();
         form.render("select"); //更新全部
-        $('.layui-form-select').parent().attr('style' , 'display:flex');
+        $('.modal-body').find('.layui-form-select').parent().attr('style' , 'display:flex');
         form.render("radio"); //更新全部
     });
+
+    layui.use('layedit', function(){
+      var layedit = layui.layedit;
+      layedit.build('test-decr', {
+        height: 180, //设置编辑器高度
+        width: 70, //设置编辑器宽度(百分比)
+      });
+    });
+
+
+
+
+
+
 <?php $this->endBlock() ?>
 <?php $this->registerJs($this->blocks["servicea"], \yii\web\View::POS_END); ?>

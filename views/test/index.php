@@ -34,12 +34,12 @@ $this->params['breadcrumbs'][] = $this->title;
             'username',
             [
                 'attribute' => 'sex',
-                'filter' => false, //不显示搜索框
                 'value' => function($data) {
                     return $data['sex'] ? '女' : '男';
                 }
             ],
             'tel',
+            'area',
             'age',
             'hobby',
             // 'decr',

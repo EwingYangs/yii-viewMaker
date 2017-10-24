@@ -30,9 +30,9 @@ class Test extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['username'], 'required'],
+            [['username' , 'age'], 'required'],
             [['age'], 'integer'],
-            [['username', 'hobby', 'decr'], 'string', 'max' => 255],
+            [['username', 'hobby', 'decr' , 'area'], 'string', 'max' => 255],
             [['tel'], 'string', 'max' => 50],
         ];
     }
@@ -50,6 +50,8 @@ class Test extends \yii\db\ActiveRecord
             'hobby' => '爱好',
             'decr' => '简介',
             'sex' => '性别',
+            'area' => '地区',
+            'logo' => '头像',
         ];
     }
 }

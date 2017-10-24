@@ -5,17 +5,17 @@
  @License：LGPL
 
  */
- 
+
 layui.define('layer', function(exports){
   "use strict";
-  
+
   var $ = layui.jquery;
   var layer = layui.layer;
   var device = layui.device();
-  
+
   var elemDragEnter = 'layui-upload-enter';
   var elemIframe = 'layui-upload-iframe';
- 
+
   var msgConf = {
     icon: 2
     ,shift: 6
@@ -24,24 +24,24 @@ layui.define('layer', function(exports){
     ,video: '视频'
     ,audio: '音频'
   };
-  
+
   var Upload = function(options){
     this.options = options;
   };
-  
+
   //初始化渲染
   Upload.prototype.init = function(){
     var that = this, options = that.options;
     var body = $('body'), elem = $(options.elem || '.layui-upload-file');
     var iframe = $('<iframe id="'+ elemIframe +'" class="'+ elemIframe +'" name="'+ elemIframe +'"></iframe>');
-    
-    //插入iframe    
+
+    //插入iframe
     $('#'+elemIframe)[0] || body.append(iframe);
-    
+
     return elem.each(function(index, item){
       item = $(item);
       var form = '<form target="'+ elemIframe +'" method="'+ (options.method||'post') +'" key="set-mine" enctype="multipart/form-data" action="'+ (options.url||'') +'"></form>';
-      
+
       var type = item.attr('lay-type') || options.type; //获取文件类型
 
       //包裹ui元素
@@ -50,9 +50,9 @@ layui.define('layer', function(exports){
           item.attr('lay-title') || options.title|| ('上传'+ (fileType[type]||'图片') )
         ) +'</span></div>';
       }
-      
+
       form = $(form);
-      
+
       //拖拽支持
       if(!options.unwrap){
         form.on('dragover', function(e){
@@ -64,7 +64,7 @@ layui.define('layer', function(exports){
           $(this).removeClass(elemDragEnter);
         });
       }
-      
+
       //如果已经实例化，则移除包裹元素
       if(item.parent('form').attr('target') === elemIframe){
         if(options.unwrap){
@@ -74,17 +74,17 @@ layui.define('layer', function(exports){
           item.unwrap().unwrap();
         }
       };
-      
+
       //包裹元素
       item.wrap(form);
-      
+
       //触发上传
       item.off('change').on('change', function(){
         that.action(this, type);
       });
     });
   };
-  
+
   //提交上传
   Upload.prototype.action = function(input, type){
     var that = this, options = that.options, val = input.value;
@@ -93,7 +93,7 @@ layui.define('layer', function(exports){
     if(!val){
       return;
     };
-    
+
     //校验文件
     switch(type){
       case 'file': //一般文件
@@ -121,9 +121,10 @@ layui.define('layer', function(exports){
         }
       break;
     }
-    
+
     options.before && options.before(input);
     item.parent().submit();
+
 
     var iframe = $('#'+elemIframe), timer = setInterval(function() {
       var res;
@@ -144,11 +145,11 @@ layui.define('layer', function(exports){
         }
         typeof options.success === 'function' && options.success(res, input);
       }
-    }, 30); 
-    
+    }, 30);
+
     input.value = '';
   };
-  
+
   //暴露接口
   exports('upload', function(options){
     var upload = new Upload(options = options || {});

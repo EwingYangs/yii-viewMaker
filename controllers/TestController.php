@@ -8,6 +8,8 @@ use app\models\TestSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use app\models\UploadForm;
+use yii\web\UploadedFile;
 
 /**
  * TestController implements the CRUD actions for Test model.
@@ -126,5 +128,28 @@ class TestController extends Controller
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
+    }
+
+
+    //上传图片
+    public function actionUploadfile(){
+        $upload = new UploadForm();
+        $model = new Test();
+        $msg = 'error';
+        $url = '';
+        if (Yii::$app->request->isPost) {
+            if($_FILES['Test']['error']['logo'] != 4){
+                $upload->imageFile = UploadedFile::getInstance($model, 'logo');
+                $file_path = $upload->upload();
+                if ($file_path) {
+                    // 文件上传成功
+                    $url = $file_path;
+                    $msg = 'success';
+                }else{
+                    $msg = '文件上传失败，原因是'.$upload->getErrors('imageFile')[0];
+                }
+            }
+        }
+        echo json_encode(array('msg' => $msg , 'url' => $url));
     }
 }
