@@ -86,7 +86,7 @@ layui.define('layer', function(exports){
   };
 
   //提交上传
-  Upload.prototype.action = function(input, type){
+  Upload.prototype.action = function(input, type ,e){
     var that = this, options = that.options, val = input.value;
     var item = $(input), ext = item.attr('lay-ext') || options.ext || ''; //获取支持上传的文件扩展名;
 
@@ -123,8 +123,21 @@ layui.define('layer', function(exports){
     }
 
     options.before && options.before(input);
-    item.parent().submit();
+//     item.parent().submit(function(event){
+// 　　　　event.preventDefault();
+// 　　} );
 
+    $.ajax({
+      processData: false,
+      contentType: false,
+      url : item.parent().attr('action'),
+      type : 'post',
+      data : new FormData(item.parent()[0]),
+      dataType : 'json',
+      success : function(res){
+        options.success(res, input)
+      }
+    });
 
     var iframe = $('#'+elemIframe), timer = setInterval(function() {
       var res;

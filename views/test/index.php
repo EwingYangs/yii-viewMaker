@@ -33,6 +33,13 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'username',
             [
+                'attribute' => 'logo',
+                'format' => ['image' ,  [ 'width'=>'80','height'=>'80']],
+                'value' => function($data) {
+                    return $data['logo'];
+                }
+            ],
+            [
                 'attribute' => 'sex',
                 'value' => function($data) {
                     return $data['sex'] ? '女' : '男';
@@ -42,7 +49,13 @@ $this->params['breadcrumbs'][] = $this->title;
             'area',
             'age',
             'hobby',
-            // 'decr',
+            // [
+            //     'attribute' => 'decr',
+            //     'format' => 'raw',
+            //     'value' => function($data) {
+            //         return $data['decr'];
+            //     }
+            // ],
 
             [
             'header' => '操作',

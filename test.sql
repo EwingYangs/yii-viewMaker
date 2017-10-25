@@ -26,14 +26,16 @@ CREATE TABLE `test` (
   `tel` varchar(50) NOT NULL DEFAULT '' COMMENT '电话号码',
   `age` tinyint(4) NOT NULL DEFAULT '0' COMMENT '年龄',
   `hobby` varchar(255) NOT NULL DEFAULT '' COMMENT '爱好',
-  `decr` varchar(255) NOT NULL DEFAULT '' COMMENT '简介',
+  `decr` text NOT NULL COMMENT '简介',
   `sex` tinyint(4) NOT NULL DEFAULT '0' COMMENT '性别',
+  `area` varchar(255) NOT NULL DEFAULT '' COMMENT '地区',
+  `logo` varchar(255) NOT NULL DEFAULT '' COMMENT '头像',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `test` */
 
-insert  into `test`(`id`,`username`,`tel`,`age`,`hobby`,`decr`,`sex`) values (1,'嘉颖','1332222111',23,'篮球，足球','php开发程序员',0),(2,'小明','1325455544',24,'篮球，唱歌','c++',0),(3,'小红','1325455544',25,'篮球，唱歌','java',1),(4,'嘉颖','1332222111',23,'篮球，足球','php开发程序员',0),(5,'小明','1325455544',24,'篮球，唱歌','c++',0),(6,'小红','1325455544',25,'篮球，唱歌','java',1),(7,'嘉颖','1332222111',23,'篮球，足球','php开发程序员',0),(8,'小明','1325455544',24,'篮球，唱歌','c++',0),(9,'小红','1325455544',25,'篮球，唱歌','java',1),(10,'嘉颖','1332222111',23,'篮球，足球','php开发程序员',0);
+insert  into `test`(`id`,`username`,`tel`,`age`,`hobby`,`decr`,`sex`,`area`,`logo`) values (1,'嘉颖','1332222111',23,'篮球，足球','php开发程序员<div>111</div>',0,'广东',''),(2,'小明','1325455544',24,'篮球，唱歌','c++',0,'广东',''),(3,'小红','1325455544',25,'篮球，唱歌','java',1,'广东',''),(4,'嘉颖','1332222111',23,'篮球，足球','php开发程序员',0,'广东',''),(5,'小明','1325455544',24,'篮球，唱歌','c++',0,'江苏',''),(6,'小红','1325455544',25,'篮球，唱歌','java',1,'江苏',''),(7,'嘉颖','1332222111',23,'篮球，足球','php开发程序员',0,'江苏',''),(8,'小明','1325455544',24,'篮球，唱歌','c++',0,'江苏',''),(9,'小红','1325455544',25,'篮球，唱歌','java',1,'北京',''),(10,'嘉颖','1332222111',23,'篮球，足球','php开发程序员',0,'北京',''),(14,'小黄','13251005451',18,'篮球','1024',0,'广东','uploads/59f03527245df.jpg'),(20,'Ewing','13250150526',15,'php','php开发',0,'广东','uploads/59f02f736d156.jpg');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
