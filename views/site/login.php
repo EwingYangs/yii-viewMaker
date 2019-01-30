@@ -10,38 +10,57 @@ use yii\bootstrap\ActiveForm;
 $this->title = 'Login';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="site-login">
-    <h1><?= Html::encode($this->title) ?></h1>
+<?=Html::cssFile('css/layui/register-login.css')?>
 
-    <p>Please fill out the following fields to login:</p>
+<div id="box"></div>
+<div class="cent-box">
+    <div class="cent-box-header">
+        <h1 class="main-title">Yii-viewMake</h1>
+        <h2 class="sub-title"> 后台管理系统</h2>
+    </div>
+    <div class="cont-main clearfix">
+        <?php $form = ActiveForm::begin(
+        [
+                'options'=>['class'=>'login form'],
+                'action' => 'index.php',
+                'method' => 'post',
+            ]
+        ); ?>
 
-    <?php $form = ActiveForm::begin([
-        'id' => 'login-form',
-        'layout' => 'horizontal',
-        'fieldConfig' => [
-            'template' => "{label}\n<div class=\"col-lg-3\">{input}</div>\n<div class=\"col-lg-8\">{error}</div>",
-            'labelOptions' => ['class' => 'col-lg-1 control-label'],
-        ],
-    ]); ?>
+        <div class="group">
 
-        <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
-
-        <?= $form->field($model, 'password')->passwordInput() ?>
-
-        <?= $form->field($model, 'rememberMe')->checkbox([
-            'template' => "<div class=\"col-lg-offset-1 col-lg-3\">{input} {label}</div>\n<div class=\"col-lg-8\">{error}</div>",
-        ]) ?>
-
-        <div class="form-group">
-            <div class="col-lg-offset-1 col-lg-11">
-                <?= Html::submitButton('Login', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
+            <div class="group-ipt email">
+            <?= $form->field($model, 'username')->textInput(['id'=> 'email' , 'placeholder'=> '帐号同密码 test123456', 'class' => 'ipt'])->label(false) ?>
             </div>
+
+            <div class="group-ipt password">
+            <?= $form->field($model, 'password')->textInput(['id'=> 'password' , 'placeholder'=> '输入您的登录密码', 'class' => 'ipt'])->label(false) ?>
+            </div>
+
         </div>
 
-    <?php ActiveForm::end(); ?>
+        <div class="button">
+        <?= Html::submitButton('登录', ['id' => 'embed-submit' , 'class' => 'login-btn register-btn button']) ?>
+        </div>
+        <?php ActiveForm::end(); ?>
 
-    <div class="col-lg-offset-1" style="color:#999;">
-        You may login with <strong>admin/admin</strong> or <strong>demo/demo</strong>.<br>
-        To modify the username/password, please check out the code <code>app\models\User::$users</code>.
+        <div class="remember clearfix">
+            <label class="remember-me"><a href="#">QQ登录</a></label>
+            <label class="forgot-password">
+                <a href="#">忘记密码？</a>
+            </label>
+        </div>
     </div>
 </div>
+
+<div class="footer">
+    <p>© 2017 <a href="https://www.calm7.com">static7 personal blog </a></p>
+</div>
+
+<?=Html::jsFile('layui/layui.js')?>
+<?=Html::jsFile('js/layui/particles.js')?>
+<?=Html::jsFile('js/layui/background.js')?>
+
+
+
+

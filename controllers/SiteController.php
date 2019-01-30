@@ -60,6 +60,7 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+        Yii::$app->log->targets['debug'] = true;//开启debug
         return $this->render('index');
     }
 
@@ -70,6 +71,7 @@ class SiteController extends Controller
      */
     public function actionLogin()
     {
+        $this->layout = false;//不使用模板
         if (!Yii::$app->user->isGuest) {
             return $this->goHome();
         }

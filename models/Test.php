@@ -13,6 +13,9 @@ use Yii;
  * @property integer $age
  * @property string $hobby
  * @property string $decr
+ * @property integer $sex
+ * @property string $area
+ * @property string $logo
  */
 class Test extends \yii\db\ActiveRecord
 {
@@ -30,9 +33,9 @@ class Test extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['username'], 'required'],
+            [['username' , 'age'], 'required'],
             [['age'], 'integer'],
-            [['username', 'hobby', 'decr'], 'string', 'max' => 255],
+            [['username', 'hobby', 'decr', 'area', 'logo'], 'string', 'max' => 255],
             [['tel'], 'string', 'max' => 50],
         ];
     }
@@ -49,6 +52,9 @@ class Test extends \yii\db\ActiveRecord
             'age' => '年龄',
             'hobby' => '爱好',
             'decr' => '简介',
+            'sex' => '性别',
+            'area' => '地区',
+            'logo' => '头像',
         ];
     }
 }

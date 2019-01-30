@@ -96,7 +96,7 @@ $this->title = '首页';
     <div class="layui-footer layui-larry-foot" id="larry-footer">
         <div class="layui-mian">
             <div class="larry-footer-left">
-                yii视图模板 QQ群：118541934
+                php技术交流 QQ群：453442221
 
             </div>
             <p class="p-admin">

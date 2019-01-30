@@ -78,7 +78,7 @@ use yii\helpers\Html;
                         <tbody>
                         <tr>
                             <td>
-                                <strong>版本信息</strong>： 版本名称：<a href="http://www.bmob.cn">Bmob</a> 版本号: V01_UTF8_0.10
+                                <strong>版本信息</strong>： 版本名称：<a href="http://www.bmob.cn">Yii2</a> 版本号: V01_UTF8_0.10
 
                             </td>
                             <td>
@@ -87,7 +87,7 @@ use yii\helpers\Html;
                         </tr>
                         <tr>
                             <td>
-                                <strong>开发作者</strong>： Magic
+                                <strong>开发作者</strong>： Ewing
 
                             </td>
                             <td></td>

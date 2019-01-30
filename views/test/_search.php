@@ -29,6 +29,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'hobby')->textInput(['maxlength' => true , 'class' => 'layui-input' , 'placeholder' => '爱好'])->label(false) ?>
 
+    <?= $form->field($model, 'area')->dropDownList(['广东' => '广东' , '江苏'=> '江苏'], ['prompt'=>'请选择','style'=> "width:50%"])->label(false) ?>
+
     <?php // echo $form->field($model, 'decr')->textInput(['maxlength' => true , 'class' => 'layui-input' , 'placeholder' => '简介'])->label(false) ?>
 
     <?= Html::submitButton('搜索', ['class' => 'layui-btn layui-btn-warning']) ?>

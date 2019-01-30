@@ -12,7 +12,6 @@ $this->title = 'Tests';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
-<?=Html::cssFile("css/bootstrap.min.css")?>
 
 <div class="test-index">
 
@@ -33,10 +32,30 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'id',
             'username',
+            [
+                'attribute' => 'logo',
+                'format' => ['image' ,  [ 'width'=>'80','height'=>'80']],
+                'value' => function($data) {
+                    return $data['logo'];
+                }
+            ],
+            [
+                'attribute' => 'sex',
+                'value' => function($data) {
+                    return $data['sex'] ? '女' : '男';
+                }
+            ],
             'tel',
+            'area',
             'age',
             'hobby',
-            // 'decr',
+            // [
+            //     'attribute' => 'decr',
+            //     'format' => 'raw',
+            //     'value' => function($data) {
+            //         return $data['decr'];
+            //     }
+            // ],
 
             [
             'header' => '操作',
@@ -115,7 +134,8 @@ $this->params['breadcrumbs'][] = $this->title;
 </div>
 
 
-<?php $this->beginBlock("service")?>    function openDeleteModal(label){
+<?php $this->beginBlock("service")?>
+    function openDeleteModal(label){
         var id = $(label).attr('data-id');
         var url = $(label).attr('for');
         layer.confirm('确定删除'+id, function(){
@@ -128,4 +148,10 @@ $this->params['breadcrumbs'][] = $this->title;
             });
         });
     }
+
+    layui.use('form', function(){
+        var form = layui.form();
+        form.render("select"); //更新全部
+        form.render("radio"); //更新全部
+    });
 <?php $this->endBlock() ?><?php $this->registerJs($this->blocks["service"], \yii\web\View::POS_END);?>
